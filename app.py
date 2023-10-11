@@ -31,8 +31,12 @@ if st.button('Search'):
         st.write(search_result['Address'])
         st.write(search_result['score'])
 
-        # Recommended restaurants
-        st.write('Similar restaurants')
-        # Get the index of search_result
+        # Show a map with the location
+        st.write('Map')
+        st.map(search_result[['lat', 'lon']])
 
-        st.write(recommender.recommendations(search_result['id'], cosine_sim, indices, df))
+        # # Recommended restaurants
+        # st.write('Similar restaurants')
+        # # Get the index of search_result
+
+        # st.write(recommender.recommendations(search_result['id'], cosine_sim, indices, df))

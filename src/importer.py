@@ -26,11 +26,24 @@ def load_data():
     # New column with the id
     df['id'] = df.index
 
-    return df
+    # Get the latitude from an Address
+    df['lat'] = df['Address'].apply(get_latitude)
+    df['lon'] = df['Address'].apply(get_longitude)
 
+    return df
 
 def get_sentiment_score(sentence):
     sid = SentimentIntensityAnalyzer()
     sentiment_dict = sid.polarity_scores(sentence)
     score = sentiment_dict['compound'] * 100
     return score
+
+def get_latitude(address):
+    import geocoder
+    g = geocoder.osm(address)
+    return g.lat
+
+def get_longitude(address):
+    import geocoder
+    g = geocoder.osm(address)
+    return g.lng
