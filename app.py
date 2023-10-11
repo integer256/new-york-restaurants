@@ -1,7 +1,6 @@
 import streamlit as st
 import sys
 sys.path.append("./src")
-
 import importer
 import recommender
 import search
@@ -21,6 +20,7 @@ search_term = st.text_input('Search for a restaurant')
 
 # Search button
 if st.button('Search'):
+    st.balloons()
     search_result = search.search_keyword(search_term, df)
     search_result = search.higher_score(search_result, df)
     if len(search_result) == 0:
