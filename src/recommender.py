@@ -28,5 +28,8 @@ def recommendations(id, cosine_sim, indices, df):
     # Get the cosine similarity matrix from the key words
     top_10 = list(similarity_scores.iloc[1:11].index)
 
+    # Remove restaurants with same name
+    top_10 = [i for i in top_10 if df['RestaurantName'][i] != df['RestaurantName'][id]]
+
     # Get the cosine similarity matrix from the key words
     return df.iloc[top_10]

@@ -3,3 +3,5 @@ numpy
 scikit-learn
 geocoder
 nltk
+bs4
+lxml

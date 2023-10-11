@@ -1,3 +1,6 @@
+import requests
+from bs4 import BeautifulSoup
+
 # Function to search keywords in comments
 def search_keyword(keyword, df):
     keyword = keyword.lower()

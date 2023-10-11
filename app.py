@@ -12,10 +12,11 @@ cosine_sim, indices = recommender.create_model(df)
 st.title('New York City Restaurant Recommender')
 
 # Subtitle
-st.subheader('Find the best restaurants in New York City')
+st.write('Find the best restaurants in New York City')
+st.write('')
 
 # Search bar
-search_term = st.text_input('Search for a restaurant')
+search_term = st.text_input('Search for keywords')
 
 # Search button
 if st.button('Search'):
@@ -26,17 +27,14 @@ if st.button('Search'):
         st.write('No results found')
     else:
         # Show first restaurant in search results and recommended restaurants
-        st.write('Best restaurant')
-        st.write(search_result['RestaurantName'])
-        st.write(search_result['Address'])
-        st.write(search_result['score'])
+        st.write('')
+        st.subheader('Best restaurant')
 
-        # Show a map with the location
-        st.write('Map')
-        st.map(search_result[['lat', 'lon']])
+        # Show a table with the restaurant
+        st.table(search_result[['RestaurantName', 'Address', 'score']])
 
-        # # Recommended restaurants
-        # st.write('Similar restaurants')
-        # # Get the index of search_result
+        # Recommended restaurants
+        st.write('Similar restaurants')
+        # Get the index of search_result
 
-        # st.write(recommender.recommendations(search_result['id'], cosine_sim, indices, df))
+        st.write(recommender.recommendations(search_result['id'], cosine_sim, indices, df))
