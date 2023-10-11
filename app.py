@@ -5,7 +5,6 @@ import importer
 import recommender
 import search
 
-
 df = importer.load_data()
 cosine_sim, indices = recommender.create_model(df)
 
