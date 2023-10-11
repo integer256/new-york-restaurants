@@ -21,9 +21,19 @@ search_term = st.text_input('Search for a restaurant')
 
 # Search button
 if st.button('Search'):
-    indices = search.search_keyword(search_term, df)
-    if len(indices) == 0:
+    search_result = search.search_keyword(search_term, df)
+    search_result = search.higher_score(search_result, df)
+    if len(search_result) == 0:
         st.write('No results found')
     else:
-        for i in indices:
-            st.write(df.iloc[i]['RestaurantName'])
+        # Show first restaurant in search results and recommended restaurants
+        st.write('Best restaurant')
+        st.write(search_result['RestaurantName'])
+        st.write(search_result['Address'])
+        st.write(search_result['score'])
+
+        # Recommended restaurants
+        st.write('Similar restaurants')
+        # Get the index of search_result
+
+        st.write(recommender.recommendations(search_result['id'], cosine_sim, indices, df))

@@ -2,7 +2,6 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 
 def create_model(df):
-
     # Train model with the key words
     count = CountVectorizer(stop_words='english')
     count_matrix = count.fit_transform(df['key_words'])
